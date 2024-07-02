@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 5000;
+const port =  2000;
 
 const mongoDB = require("./db");
 mongoDB(); // Connect to MongoDB
@@ -20,10 +20,13 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+
+
 // API routes for various functionalities
 app.use('/api', require("./Routes/CreateUser"));
 app.use('/api', require("./Routes/DisplayData"));
 app.use('/api', require("./Routes/OrderData"));
+app.use('/api', require("./Routes/GetLocation"));
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -35,3 +38,8 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
+
+
+
+
+
